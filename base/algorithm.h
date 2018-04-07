@@ -1,6 +1,10 @@
 #ifndef _ALGORITHM_H_
 #define _ALGORITHM_H_
 
+/**********************************************************************************/
+/*                             最短路径相关算法                                           */
+/**********************************************************************************/
+
 
 #define ALGORITHM_SP_INVAILD 0x0fffffff /* 表示不可达 */
 
@@ -94,10 +98,75 @@ VOID ALGORITHM_SP_BellmanFord(IN ALGORITHM_SP_SIDE_S *pstSide, OUT INT aiDis[ALG
 
 VOID ALGORITHM_SP_BellmanFord_QueueEx(IN ALGORITHM_SP_SIDE_S *pstSide, OUT INT aiDis[ALGORITHM_MAPSIDE_SIZE]);
 
+/* 示例用法 */
+/*
+    ALGORITHM_SP_SIDE_S stSide = {{0, 0, 1, 1, 2, 3, 4},
+                                  {1, 4, 2, 4, 3, 4, 2},
+                                  {2, 10, 3, 7, 4, 5, 6},
+                                  5,
+                                  7};
+    UINT aiDis[ALGORITHM_MAPSIDE_SIZE];
 
+    ALGORITHM_SP_BellmanFord_QueueEx(&stSide, aiDis);
 
+    for (UINT i = 0; i < 5; i++)
+    {
+        printf("aiDis[%d] = %d\n", i, aiDis[i]);
+    }
+*/
 
+/**********************************************************************************/
+/*                             二叉树相关算法                                            */
+/**********************************************************************************/
+#define ALGORITHM_BT_POINTCOUNT 100
 
+VOID ALGORITHM_BT_HeapSort(INOUT UINT auiNum[ALGORITHM_BT_POINTCOUNT], IN UINT uiCount);
 
+/* 示例用法 */
+
+/*
+
+    UINT auiNum[ALGORITHM_BT_POINTCOUNT] = {99, 5, 36, 7, 22, 17, 46, 12, 2, 19, 25, 28, 1, 92};
+    UINT uiCount = 14;
+    ALGORITHM_BT_HeapSort(auiNum, uiCount);
+    for (UINT i = 0; i < uiCount; i++)
+    {
+        printf("%d ", auiNum[i]);
+    }
+    printf("\n");
+
+*/
+#define ALGORITHM_BT_RELATIONCOUNT 100
+
+typedef struct ALGORITHM_BT_RELATION
+{
+    UINT auiRelation[ALGORITHM_BT_RELATIONCOUNT][2];
+    UINT uiRelationCount;
+    UINT uiPointCount;
+}ALGORITHM_BT_RELATION_S;
+
+UINT ALGORITHM_BT_UnionFindSet(IN ALGORITHM_BT_RELATION_S *pstRelation, OUT UINT auiNum[ALGORITHM_BT_POINTCOUNT]);
+
+/* 示例用法 */
+/*
+    ALGORITHM_BT_RELATION_S stRelation = {{{0, 1},
+                                           {2, 3},
+                                           {4, 1},
+                                           {3, 5},
+                                           {1, 5},
+                                           {7, 6},
+                                           {8, 6},
+                                           {0, 5},
+                                           {1, 3}},
+                                          9,
+                                          10};
+    UINT auiNum[ALGORITHM_BT_POINTCOUNT] = {0};
+    UINT uiSum = ALGORITHM_BT_UnionFindSet(&stRelation, auiNum);
+    for (UINT i = 0; i < 10; i++)
+    {
+        printf("%u ", auiNum[i]);
+    }
+    printf("\nsum = %d\n", uiSum);
+*/
 
 #endif
