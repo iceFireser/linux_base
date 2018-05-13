@@ -4,6 +4,7 @@
 
 VOID ERR_Dump(IN const CHAR *pcFmt, ...);
 VOID ERR_Sys(IN const CHAR *pcFmt, ...);
+VOID ERR_Hint(IN const CHAR *pcFmt, ...);
 
 
 

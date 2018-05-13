@@ -6,20 +6,31 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include <sys/epoll.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <stdarg.h>
+#include <signal.h>
+#include <pthread.h>
+#include <netdb.h>
+#include <ctype.h>
+#include <time.h>
+#include <execinfo.h>
+
+#include <sys/epoll.h>
 #include <sys/timerfd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
-#include <signal.h>
 #include <sys/signalfd.h>
-#include <pthread.h>
-#include <time.h>
 #include <sys/uio.h>
-#include <netdb.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <sys/sem.h>
+#include <sys/shm.h>
+
+
+
+
 
 
 #include "basetype.h"
@@ -30,6 +41,8 @@
 
 #include "hmdb.h"
 #include "algorithm.h"
+#include "process.h"
+#include "debug.h"
 
 
 typedef struct EPOLL_EX_NODE

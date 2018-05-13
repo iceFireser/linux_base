@@ -49,3 +49,14 @@ VOID ERR_Sys(IN const CHAR *pcFmt, ...)
 
     return;
 }
+
+VOID ERR_Hint(IN const CHAR *pcFmt, ...)
+{
+    va_list pAp;
+
+    va_start(pAp, pcFmt);
+    ERR_Show(0, errno, pcFmt, pAp);
+    va_end(pAp);
+
+    return;
+}

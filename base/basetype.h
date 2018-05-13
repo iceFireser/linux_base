@@ -1,5 +1,5 @@
-#ifndef BASETYPE_H_
-#define BASETYPE_H_
+#ifndef _BASETYPE_H_
+#define _BASETYPE_H_
 
 
 typedef void VOID;
@@ -33,6 +33,10 @@ if (ERROR_SUCCESS == iRet) \
 
 #define SYMMETY_TAIL \
 }
+
+#define BIT_SET(a, b)    (a = (a | b))
+#define BIT_TEST(a, b)   (0 != (a & b))
+#define BIT_RESET(a, b)  (a = (a & (~b)))
 
 
 #endif
